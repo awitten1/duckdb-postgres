@@ -1,2 +1,9 @@
+If:
+  Match: duckdb/*
 CompileFlags:
-  CompilationDatabase: build/release/
+  CompilationDatabase: duckdb/build/clangd
+---
+If:
+  Match: ./*
+CompileFlags:
+  CompilationDatabase: build/release
