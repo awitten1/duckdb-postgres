@@ -1,0 +1,14 @@
+LOAD 'build/release/extension/postgres_scanner/postgres_scanner.duckdb_extension';
+ATTACH 'dbname=postgres user=postgres host=127.0.0.1 password=mysecretpassword' AS pg (TYPE postgres);
+LOAD 'build/release/extension/tpch/tpch.duckdb_extension';
+ATTACH 'tpch' as tpch;
+USE tpch;
+CALL dbgen(sf = 1);
+CREATE TABLE pg.customer AS SELECT * FROM customer;
+CREATE TABLE pg.nation AS SELECT * FROM nation;
+CREATE TABLE pg.orders AS SELECT * FROM orders;
+CREATE TABLE pg.lineitem AS SELECT * FROM lineitem;
+CREATE TABLE pg.part AS SELECT * FROM part;
+CREATE TABLE pg.partsupp AS SELECT * FROM partsupp;
+CREATE TABLE pg.region AS SELECT * FROM region;
+CREATE TABLE pg.supplier AS SELECT * FROM supplier;
